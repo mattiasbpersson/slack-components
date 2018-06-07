@@ -6,3 +6,9 @@
  npm install --save-dev eslint eslint-plugin-vue
  npm install --save-dev eslint eslint-plugin-vue
 
+
+firebase login
+firebase init
+npm run build
+edit firebase.json 
+firebase deploy
