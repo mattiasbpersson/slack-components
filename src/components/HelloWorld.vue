@@ -4,6 +4,8 @@
       <v-card-text>
         <p>{{ msg }}</p>
         <VIf></VIf>
+        <VFor></VFor>
+        <VBind></VBind>
       </v-card-text>
     </v-card>
   </v-flex>
@@ -11,9 +13,12 @@
 
 <script>
 import VIf from './VIf'
+import VFor from './VFor'
+import VBind from './VBind'
+
 export default {
   name: 'HelloWorld',
-  components: {VIf},
+  components: {VBind, VFor, VIf},
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'

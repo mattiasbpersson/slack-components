@@ -1,7 +1,7 @@
 <template>
   <v-card>
     <v-card-title>
-      <span class="headline">v-conditional</span>
+      <span class="headline">VIf</span>
     </v-card-title>
     <v-card-text>
       <p v-if="showPlums && showPeaches">Plums and peaches</p>
