@@ -1,3 +1,9 @@
 * V-on for component - skicka event upp till förälder
 * V-model - dubbelriktig kommunikation
 * Vuefire - knyta en lista med object till lista på firebase
+* Dokument - som bas-exempel på vad vi ska göra sen. Så de har nåt att titta på.
+
+* Respektive grupp:
+** Todolist
+** Poll
+** Markdown dokument
