@@ -24,7 +24,7 @@ import Child1 from './Child1'
 import Child2 from './Child2'
 
 export default {
-  name: 'Parent',
+  name: 'PropAndEventBasedCommunication',
   components: {Child2, Child1},
   data () {
     return {
