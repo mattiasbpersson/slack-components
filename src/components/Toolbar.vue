@@ -1,6 +1,6 @@
 <template>
   <v-toolbar app>
-    <v-toolbar-side-icon v-on:click="$emit('toggle-drawer')"></v-toolbar-side-icon>
+    <v-toolbar-side-icon v-on:click="toggleDrawer"></v-toolbar-side-icon>
     <v-toolbar-title>Slackr</v-toolbar-title>
     <v-spacer></v-spacer>
     <v-toolbar-items>
@@ -10,8 +10,14 @@
 </template>
 
 <script>
+import {eventBus} from '../main'
 export default {
-  name: 'Toolbar'
+  name: 'Toolbar',
+  methods: {
+    toggleDrawer () {
+      eventBus.$emit('toggle-drawer')
+    }
+  }
 }
 </script>
 

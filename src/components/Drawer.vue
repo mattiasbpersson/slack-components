@@ -2,7 +2,7 @@
   <v-navigation-drawer app temporary v-model="isOpen">
     <v-list class="pt-0" dense>
 
-      <v-list-tile @click="logAndCloseDrawer('show text message creation component!')">
+      <v-list-tile @click="createTextMessage()">
         <v-list-tile-action>
           <v-icon>'create'</v-icon>
         </v-list-tile-action>
@@ -16,36 +16,26 @@
 </template>
 
 <script>
+import {eventBus} from '../main'
+
 export default {
 
   name: 'Drawer',
 
-  model: {
-    prop: 'drawerOpen',
-    event: 'toggleDrawerOpen'
-  },
-
-  props: {
-    drawerOpen: Boolean
-  },
-
   data () {
-    return {isOpen: this.drawerOpen}
+    return {isOpen: false}
   },
 
-  watch: {
-    // Propagate changes down
-    drawerOpen (b) {
-      this.isOpen = b
-    },
-    // Propagate changes up
-    isOpen (b) {
-      this.$emit('toggleDrawerOpen', b)
-    }
+  created () {
+    eventBus.$on('toggle-drawer', () => {
+      this.isOpen = !this.isOpen
+    })
   },
+
   methods: {
-    logAndCloseDrawer (message) {
-      console.log(message)
+    createTextMessage () {
+      // TODO navigate to text message creator
+      console.log('Create text message')
       this.isOpen = false
     }
   }

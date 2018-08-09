@@ -1,7 +1,7 @@
 <template>
   <v-app>
-    <Toolbar v-on:toggle-drawer="drawerOpen = !drawerOpen"></Toolbar>
-    <Drawer v-model="drawerOpen"></Drawer>
+    <Toolbar></Toolbar>
+    <Drawer></Drawer>
     <v-content>
       <v-container fluid>
         <router-view></router-view>
@@ -17,12 +17,7 @@ import Drawer from './components/Drawer'
 
 export default {
   name: 'App',
-  components: {Drawer, Toolbar},
-  data () {
-    return {
-      drawerOpen: false
-    }
-  }
+  components: {Drawer, Toolbar}
 }
 </script>
 
