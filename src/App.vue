@@ -12,8 +12,8 @@
 </template>
 
 <script>
-import Toolbar from './components/Toolbar'
-import Drawer from './components/Drawer'
+import Toolbar from './components/persistent/Toolbar'
+import Drawer from './components/persistent/Drawer'
 
 export default {
   name: 'App',

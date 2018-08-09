@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '../components/HelloWorld'
+import HelloWorld from '../pages/VueExamples'
 import firebase from 'firebase'
 
 Vue.use(Router)

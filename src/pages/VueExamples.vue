@@ -22,10 +22,10 @@
 </template>
 
 <script>
-import VIf from './VIf'
-import VFor from './VFor'
-import VBind from './VBind'
-import Parent from './componentCommunicationExample/Parent'
+import VIf from '../components/examples/VIf'
+import VFor from '../components/examples/VFor'
+import VBind from '../components/examples/v-bindExample/VBind'
+import Parent from '../components/examples/communicationExample/Parent'
 
 export default {
   name: 'HelloWorld',
