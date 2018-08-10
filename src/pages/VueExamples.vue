@@ -28,7 +28,7 @@ import VBind from '../components/examples/v-bindExample/VBind'
 import PropAndEventBasedCommunication from '../components/examples/communicationExample/PropAndEventBasedCommunication'
 
 export default {
-  name: 'HelloWorld',
+  name: 'VueExamples',
   components: {PropAndEventBasedCommunication, VBind, VFor, VIf},
   data () {
     return {
