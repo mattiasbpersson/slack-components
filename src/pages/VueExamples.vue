@@ -1,9 +1,10 @@
 <template>
   <v-flex xs12 sm6 offset-sm3>
     <v-card>
-      <v-card-text>
 
-        <p>{{ msg }}</p>
+      <v-card-title class="headline">{{ headline }}</v-card-title>
+
+      <v-card-text>
 
         <VIf></VIf>
         <br/>
@@ -15,6 +16,9 @@
         <br/>
 
         <PropAndEventBasedCommunication></PropAndEventBasedCommunication>
+        <br/>
+
+        <EventBusBasedCommunication/>
 
       </v-card-text>
     </v-card>
@@ -26,13 +30,14 @@ import VIf from '../components/examples/VIf'
 import VFor from '../components/examples/VFor'
 import VBind from '../components/examples/v-bindExample/VBind'
 import PropAndEventBasedCommunication from '../components/examples/communicationExample/PropAndEventBasedCommunication'
+import EventBusBasedCommunication from '../components/examples/eventBusExample/EventBusBasedCommunication'
 
 export default {
   name: 'VueExamples',
-  components: {PropAndEventBasedCommunication, VBind, VFor, VIf},
+  components: {EventBusBasedCommunication, PropAndEventBasedCommunication, VBind, VFor, VIf},
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      headline: 'Some Vue.js examples'
     }
   }
 }
