@@ -14,7 +14,7 @@
         <VBind></VBind>
         <br/>
 
-        <Parent></Parent>
+        <PropAndEventBasedCommunication></PropAndEventBasedCommunication>
 
       </v-card-text>
     </v-card>
@@ -22,14 +22,14 @@
 </template>
 
 <script>
-import VIf from './VIf'
-import VFor from './VFor'
-import VBind from './VBind'
-import Parent from './componentCommunicationExample/Parent'
+import VIf from '../components/examples/VIf'
+import VFor from '../components/examples/VFor'
+import VBind from '../components/examples/v-bindExample/VBind'
+import PropAndEventBasedCommunication from '../components/examples/communicationExample/PropAndEventBasedCommunication'
 
 export default {
-  name: 'HelloWorld',
-  components: {Parent, VBind, VFor, VIf},
+  name: 'VueExamples',
+  components: {PropAndEventBasedCommunication, VBind, VFor, VIf},
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
