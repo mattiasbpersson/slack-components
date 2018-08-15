@@ -6,6 +6,7 @@
 
       <v-card-text>
         Check out this cool <a href="https://vuejs-tips.github.io/cheatsheet/">cheat sheet</a> <br>
+
         <VIf></VIf>
         <br/>
 
@@ -22,7 +23,7 @@
         <br/>
 
         <VModel/>
-
+        
       </v-card-text>
     </v-card>
   </v-flex>
