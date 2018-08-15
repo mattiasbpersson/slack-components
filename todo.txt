@@ -1,7 +1,5 @@
-* V-model - dubbelriktig kommunikation
 * Vuefire - knyta en lista med object till lista på firebase
 * Dokument - som bas-exempel på vad vi ska göra sen. Så de har nåt att titta på.
-* Communication via eventBus example
 * Firebase login
 
 * Respektive grupp:
