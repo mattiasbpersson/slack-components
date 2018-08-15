@@ -1,12 +1,12 @@
 import Firebase from 'firebase'
 
 export const firebaseApp = Firebase.initializeApp({
-  apiKey: 'AIzaSyBcXFGSRZBqEs9Q4V4CTDCcAdPSzdBuWO0',
-  authDomain: 'slack-components.firebaseapp.com',
-  databaseURL: 'https://slack-components.firebaseio.com',
-  projectId: 'slack-components',
-  storageBucket: '',
-  messagingSenderId: '211824705413'
+  apiKey: 'AIzaSyD-K6VSW3y4wy609zg-CvaSKl99dXyFgH4',
+  authDomain: 'slack-components-410aa.firebaseapp.com',
+  databaseURL: 'https://slack-components-410aa.firebaseio.com',
+  projectId: 'slack-components-410aa',
+  storageBucket: 'slack-components-410aa.appspot.com',
+  messagingSenderId: '320092778472'
 })
 
 // Export the database for components to use.
