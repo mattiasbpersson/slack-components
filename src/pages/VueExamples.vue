@@ -23,7 +23,6 @@
         <br/>
 
         <VModel/>
-        
       </v-card-text>
     </v-card>
   </v-flex>
