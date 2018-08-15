@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "slack-components"
+    "default": "slack-components",
+    "production": "slack-components-410aa"
   }
 }

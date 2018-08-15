@@ -1,11 +1,10 @@
- vue init webpack slack-components
- cd slack-components/
- npm install vuetify --save
- npm install vue firebase vuefire --save
- npm audit fix
- npm install --save-dev eslint eslint-plugin-vue
- npm install --save-dev eslint eslint-plugin-vue
-
+vue init webpack slack-components
+cd slack-components/
+npm install vuetify --save
+npm install vue firebase vuefire --save
+npm audit fix
+npm install --save-dev eslint eslint-plugin-vue
+npm install --save-dev eslint eslint-plugin-vue
 
 firebase login
 firebase init
