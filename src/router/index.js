@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
+import VueExamples from '../pages/VueExamples'
+import Signup from '../pages/Signup'
+import Login from '../pages/Login'
 import firebase from 'firebase'
 
 Vue.use(Router)
@@ -9,8 +11,21 @@ let router = new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      name: 'VueExamples',
+      component: VueExamples,
+      meta: {requiresAuth: false}
+    },
+    {
+      path: '/signup',
+      name: 'Signup',
+      component: Signup,
+      meta: {requiresAuth: false}
+    },
+    {
+      path: '/login',
+      name: 'Login',
+      component: Login,
+      meta: {requiresAuth: false}
     }
   ]
 })
@@ -28,10 +43,13 @@ router.beforeEach((to, from, next) => {
     })
   }
 
-  let requiresAuth = to.matched.some(record => record.meta.requiresAuth)
+  let requiresAuth = to.matched.some(routeRecord => routeRecord.meta.requiresAuth)
 
-  if (requiresAuth && !currentUser) next('login')
-  else next()
+  if (requiresAuth && !currentUser) {
+    next('Login')
+  } else {
+    next()
+  }
 })
 
 export default router

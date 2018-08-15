@@ -1,18 +1,23 @@
 <template>
-  <div id="app">
-    <v-app light>
-      <v-content>
-        <v-container fluid>
-          <router-view class="router" />
-        </v-container>
-      </v-content>
-    </v-app>
-  </div>
+  <v-app>
+    <Toolbar></Toolbar>
+    <Drawer></Drawer>
+    <v-content>
+      <v-container fluid>
+        <router-view></router-view>
+      </v-container>
+    </v-content>
+    <v-footer app></v-footer>
+  </v-app>
 </template>
 
 <script>
+import Toolbar from './components/persistent/Toolbar'
+import Drawer from './components/persistent/Drawer'
+
 export default {
-  name: 'App'
+  name: 'App',
+  components: {Drawer, Toolbar}
 }
 </script>
 

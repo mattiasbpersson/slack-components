@@ -6,23 +6,26 @@ import App from './App'
 import router from './router'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
-import { firebaseApp } from '@/firebase'
+import {firebaseApp} from './firebase'
 
-Vue.config.productionTip = false
+export const eventBus = new Vue()
 
 Vue.use(Vuetify)
 Vue.use(VueFire)
 
-let app
+let appStarted = false
 
+/* Wait for initial firebase authentication (token validation) before creating Vue application */
 firebaseApp.auth().onAuthStateChanged(function (user) {
-  if (!app) {
+  if (!appStarted) {
     /* eslint-disable no-new */
-    app = new Vue({
+    new Vue({
       el: '#app',
-      components: { App },
+      components: {App},
       template: '<App/>',
+      data: {user},
       router
     })
+    appStarted = true
   }
 })
