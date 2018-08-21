@@ -11,7 +11,7 @@
       <v-text-field
         label="Write something..."
         :value="text"
-        @input="textChanged($event)"
+        @input="textChanged"
       ></v-text-field>
     </v-card-actions>
   </v-card>
