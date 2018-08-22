@@ -19,11 +19,9 @@ export default {
   },
   methods: {
     nameUpdated (event) {
-      console.log(event)
       this.$emit('change', {...this.fruit, name: event})
     },
     isRipeUpdated (event) {
-      console.log(event)
       this.$emit('change', {...this.fruit, isRipe: event})
     }
   }
