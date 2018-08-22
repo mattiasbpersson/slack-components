@@ -28,6 +28,7 @@
             label="Confirm Password"
             v-model="confirmPassword.value"
             :rules="confirmPassword.rules"
+            @keyup.enter="signup"
           ></v-text-field>
         </v-card-text>
         <v-card-actions>
@@ -40,6 +41,7 @@
 
 <script>
 import {firebaseApp} from '../firebase'
+import {eventBus} from '../main'
 import {minLength, nonempty, isEmail, isValid} from '../inputValidation'
 
 export default {
@@ -71,13 +73,17 @@ export default {
   },
   methods: {
     signup () {
-      firebaseApp.auth()
-        .createUserWithEmailAndPassword(this.email.value, this.password.value)
-        .then(user => {
-          // TODO save user info in rtdb so we can get, for example, the displayName from the email
-          console.log(user)
-        })
-        .catch(error => console.log(error))
+      if (this.formIsSubmittable) {
+        const auth = firebaseApp.auth()
+        auth.createUserWithEmailAndPassword(this.email.value, this.password.value)
+          .then(() => auth.currentUser.updateProfile({displayName: this.displayName.value})) // photoURL: undefined -> not changed (https://firebase.google.com/docs/reference/js/firebase.User#updateProfile)
+          .then(() => {
+            this.$router.push('/')
+          })
+          .catch(error => {
+            eventBus.$emit('error', error)
+          })
+      }
     }
   }
 }

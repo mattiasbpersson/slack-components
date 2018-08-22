@@ -16,14 +16,13 @@ Vue.use(VueFire)
 let appStarted = false
 
 /* Wait for initial firebase authentication (token validation) before creating Vue application */
-firebaseApp.auth().onAuthStateChanged(function (user) {
+firebaseApp.auth().onAuthStateChanged(() => {
   if (!appStarted) {
     /* eslint-disable no-new */
     new Vue({
       el: '#app',
       components: {App},
       template: '<App/>',
-      data: {user},
       router
     })
     appStarted = true
