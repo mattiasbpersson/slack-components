@@ -20,7 +20,7 @@
           ></v-text-field>
         </v-card-text>
         <v-card-actions>
-          <v-btn @click="login" :disabled="!formIsSubmittable">Login</v-btn>
+          <v-btn @click="login" :disabled="isLoggingIn || !formIsSubmittable">Login</v-btn>
           <router-link to="Signup">Signup?</router-link>
         </v-card-actions>
       </v-card>
@@ -29,6 +29,7 @@
 
 <script>
 import {firebaseApp} from '../firebase'
+import {eventBus} from '../main'
 import {nonempty, isEmail, isValid} from '../inputValidation'
 
 export default {
@@ -42,7 +43,8 @@ export default {
       password: {
         value: '',
         rules: [nonempty]
-      }
+      },
+      isLoggingIn: false
     }
   },
   computed: {
@@ -53,13 +55,12 @@ export default {
   methods: {
     login () {
       if (this.formIsSubmittable) {
+        this.isLoggingIn = true
         firebaseApp.auth()
           .signInWithEmailAndPassword(this.email.value, this.password.value)
-          .then(user => {
-            // Will probably be handled in firebase onAuthStateChanged listener in main.js
-            console.log(user)
-          })
-          .catch(error => console.log(error))
+          .then(() => { this.$router.push('/') })
+          .catch(error => { eventBus.$emit('error', error) })
+          .finally(() => { this.isLoggingIn = false })
       }
     }
   }
