@@ -59,10 +59,8 @@ export default {
         firebaseApp.auth()
           .signInWithEmailAndPassword(this.email.value, this.password.value)
           .then(() => { this.$router.push('/') })
-          .catch(error => {
-            this.isLoggingIn = false
-            eventBus.$emit('error', error)
-          })
+          .catch(error => { eventBus.$emit('error', error) })
+          .finally(() => { this.isLoggingIn = false })
       }
     }
   }
