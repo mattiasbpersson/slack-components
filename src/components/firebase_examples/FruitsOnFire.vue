@@ -26,7 +26,7 @@
           </v-form>
     </v-card-text>
     <v-card-actions>
-          <v-btn flat @click.native="save">Save</v-btn>
+          <v-btn flat @click.native="save">Add</v-btn>
         </v-card-actions>
   </v-card>
 </template>
