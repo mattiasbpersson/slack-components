@@ -8,7 +8,7 @@
     </v-card-title>
 
     <v-card-text>
-        <v-form id="form">
+        <v-form>
             <v-container grid-list-md>
               <v-layout wrap>
                 <v-flex xs12 sm6 md4>
@@ -33,13 +33,17 @@ import { db } from '@/firebase'
 export default {
   name: 'FruitOnFire',
   firebase () {
+    // Bind fruit variable to fruit_data attribute in firebase
     this.$bindAsObject('fruit', db.ref('fruity_data'))
   },
   methods: {
     save (event) {
       console.log(this.fruit)
+      // If nothing exists in firebase it will create an object with a .key and .value attribute.
+      // set-method doesn't approve
       delete this.fruit['.key']
       delete this.fruit['.value']
+      // Store fruit object in firebase
       this.$firebaseRefs.fruit.set(this.fruit)
     }
   }
