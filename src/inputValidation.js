@@ -18,6 +18,24 @@ export function minLength (length) {
 }
 
 /**
+ * maxLength(25) returns a function which can be used as a vuetify input "rule" checking the input is at most 25 characters long
+ * @param length
+ * @returns {function(string): (boolean|string)}
+ */
+export function maxLength (length) {
+  return str => str.length <= length || `Max ${length} characters`
+}
+
+/**
+ * inRange(8, 16) returns a function which can be used as a vuetify input "rule" checking the input is at least 8 ans at most 16 characters long
+ * @param length
+ * @returns {function(string): (boolean|string)}
+ */
+export function inRange (min, max) {
+  return combineRules([minLength(min), maxLength(max)])
+}
+
+/**
  * @param str
  * @returns {boolean | string}
  */
@@ -36,11 +54,27 @@ export function isValid (obj) {
   if (!obj.value || !obj.rules) {
     return false
   }
-  for (let i = 0; i < obj.rules.length; i++) {
-    const result = obj.rules[i](obj.value)
-    if (result === false || typeof result === 'string') {
-      return false
-    }
+  return abidesBy(obj.value, combineRules(obj.rules))
+}
+
+/**
+ * Combines an array of rules into one rule which returns the first failure
+ * @param rules The array of rules to combine
+ * @returns {function(*=): boolean}
+ */
+function combineRules (rules) {
+  return (value) => {
+    const failingRule = rules.find(rule => !abidesBy(value, rule))
+    return failingRule ? failingRule(value) : true
   }
-  return true
+}
+
+/**
+ * Checks if a value abides by a rule
+ * @param value the value to check
+ * @param rule The rule to apply
+ * @returns {boolean}
+ */
+function abidesBy (value, rule) {
+  return rule(value) === true
 }
