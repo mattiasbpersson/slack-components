@@ -6,7 +6,8 @@
 
       <v-card-text>
         <FruitOnFire></FruitOnFire>
-
+        <br>
+        <FruitsOnFire></FruitsOnFire>
       </v-card-text>
     </v-card>
   </v-flex>
@@ -14,10 +15,11 @@
 
 <script>
 import FruitOnFire from '../components/firebase_examples/FruitOnFire'
+import FruitsOnFire from '../components/firebase_examples/FruitsOnFire'
 
 export default {
   name: 'FirebaseExamples',
-  components: {FruitOnFire},
+  components: {FruitOnFire, FruitsOnFire},
   data () {
     return {
       headline: 'Some firebase examples'
