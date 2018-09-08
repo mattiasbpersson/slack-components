@@ -1,12 +1,10 @@
 <template>
   <v-flex xs12 sm6 offset-sm3>
-    <v-card>
+    <v-card color="blue lighten-5">
 
       <v-card-title class="headline">{{ headline }}</v-card-title>
-
+      <v-card-title>Check out this cool: <a href="https://vuejs-tips.github.io/cheatsheet/">cheat sheet</a></v-card-title>
       <v-card-text>
-        Check out this cool <a href="https://vuejs-tips.github.io/cheatsheet/">cheat sheet</a> <br>
-
         <VIf></VIf>
         <br/>
 

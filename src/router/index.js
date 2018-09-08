@@ -4,6 +4,7 @@ import VueExamples from '../pages/VueExamples'
 import Signup from '../pages/Signup'
 import Login from '../pages/Login'
 import UserInfo from '../pages/UserInfo'
+import FirebaseExamples from '../pages/FirebaseExamples'
 import firebase from 'firebase'
 
 Vue.use(Router)
@@ -32,6 +33,12 @@ let router = new Router({
       path: '/user',
       name: 'UserInfo',
       component: UserInfo,
+      meta: {requiresAuth: true}
+    },
+    {
+      path: '/firebase',
+      name: 'Firebase',
+      component: FirebaseExamples,
       meta: {requiresAuth: true}
     }
   ]
