@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import VueExamples from '../pages/VueExamples'
+import TextMessages from '../pages/TextMessages'
 import Signup from '../pages/Signup'
 import Login from '../pages/Login'
 import UserInfo from '../pages/UserInfo'
@@ -32,6 +33,12 @@ let router = new Router({
       path: '/user',
       name: 'UserInfo',
       component: UserInfo,
+      meta: {requiresAuth: true}
+    },
+    {
+      path: '/textMessages',
+      name: 'TextMessages',
+      component: TextMessages,
       meta: {requiresAuth: true}
     }
   ]
