@@ -12,6 +12,7 @@
           <td class="text-xs-left">{{ props.item['.key']}}</td>
           <td class="text-xs-left">{{ props.item.flavor }}</td>
           <td class="text-xs-left">{{ props.item.ripe }}</td>
+          <td class="text-xs-left">{{ props.item.editor }}</td>
           <td class="justify-center layout px-0">
             <v-btn icon class="mx-0" @click="editFruit(props.item)">
               <v-icon color="green">edit</v-icon>
@@ -48,7 +49,7 @@
 </template>
 
 <script>
-import { db } from '@/firebase'
+import { db, firebaseApp } from '@/firebase'
 
 export default {
   name: 'ComplexFruitsOnFire',
@@ -57,7 +58,8 @@ export default {
       headers: [
         { text: 'Name', value: 'name' },
         { text: 'Flavor', value: 'flavor' },
-        { text: 'Ripe', value: 'ripe' }
+        { text: 'Ripe', value: 'ripe' },
+        { text: 'Editor', value: 'editor' }
       ],
       new_fruit_name: '',
       new_fruit: {
@@ -77,6 +79,7 @@ export default {
       // Store fruit object in firebase
       // Specify key as name
       if (this.new_fruit && this.new_fruit_name) {
+        this.new_fruit.editor = firebaseApp.auth().currentUser.displayName
         this.$firebaseRefs.fruits.child(this.new_fruit_name).set(this.new_fruit)
       }
     },
