@@ -44,6 +44,9 @@ import TextMessageComposer from '../components/text_messages/TextMessageComposer
 export default {
   name: 'TextMessages',
   components: {TextMessageComposer},
+  created () {
+    this.$watch('messages', this.scrollToBottom)
+  },
   data () {
     return {
       loading: true
@@ -53,10 +56,7 @@ export default {
     return {
       messages: {
         source: textMessages,
-        readyCallback: () => {
-          this.loading = false
-          this.scrollToBottom()
-        }
+        readyCallback: () => { this.loading = false }
       }
     }
   },
@@ -72,7 +72,7 @@ export default {
           displayName: currentUser.displayName
         },
         text: message
-      }, () => this.scrollToBottom())
+      })
     }
   }
 }
