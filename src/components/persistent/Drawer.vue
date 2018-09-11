@@ -1,7 +1,11 @@
 <template>
   <v-navigation-drawer app temporary v-model="isOpen">
     <v-list class="pt-0" dense>
-
+      <v-list-tile @click="showFireBaseExamples()">
+        <v-list-tile-content>
+          <v-list-tile-title>Firebase examples</v-list-tile-title>
+        </v-list-tile-content>
+      </v-list-tile>
       <v-list-tile @click="createTextMessage()">
         <v-list-tile-action>
           <v-icon>'create'</v-icon>
@@ -10,7 +14,6 @@
           <v-list-tile-title>text message</v-list-tile-title>
         </v-list-tile-content>
       </v-list-tile>
-
     </v-list>
   </v-navigation-drawer>
 </template>
@@ -37,6 +40,10 @@ export default {
       // TODO navigate to text message creator
       console.log('Create text message')
       this.isOpen = false
+    },
+    showFireBaseExamples () {
+      console.log('Show firebase examples')
+      this.$router.push('firebase')
     }
   }
 }
