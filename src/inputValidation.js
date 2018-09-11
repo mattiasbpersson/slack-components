@@ -14,7 +14,7 @@ export function nonempty (value) {
  * @returns {function(string): (boolean|string)}
  */
 export function minLength (length) {
-  return str => (str && str.length >= length) || `Min ${length} characters`
+  return str => str.length >= length || `Min ${length} characters`
 }
 
 /**
@@ -23,7 +23,7 @@ export function minLength (length) {
  * @returns {function(string): (boolean|string)}
  */
 export function maxLength (length) {
-  return str => (str && str.length <= length) || `Max ${length} characters`
+  return str => str.length <= length || `Max ${length} characters`
 }
 
 /**

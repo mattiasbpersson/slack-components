@@ -9,28 +9,23 @@
 
         <v-card-text>
 
-          <template v-for="(message, key) in messages">
-            <v-card class="message" :key="key">
-
-              <v-card-title class="message-header">
-                <span class="display-name">{{message.createdBy.displayName}}</span>
-                <span class="message-time">{{new Date(message.createdAt).toLocaleString('en-SE')}}</span>
-              </v-card-title>
-
-              <v-card-text class="message-text">
-                <span class="message-text-content">{{message.text}}</span>
-              </v-card-text>
-
-            </v-card>
-          </template>
+          <TextMessageViewer
+            class="message-viewer"
+            v-for="(message, key) in messages"
+            :message="message"
+            :key="key"
+          />
 
         </v-card-text>
       </v-card>
     </v-flex>
 
-    <v-flex xs12 sm6 offset-sm3 class="message-composer">
+    <v-flex xs12 sm6 offset-sm3
+            :class="composerIsSticky ? 'sticky-composer' : ''">
       <TextMessageComposer
+        :icon="composerIsSticky ? 'arrow_drop_down' : 'arrow_drop_up'"
         @send="send"
+        @iconClicked="composerIsSticky = !composerIsSticky"
       />
     </v-flex>
   </div>
@@ -40,23 +35,27 @@
 import {textMessages} from '../firebase'
 import {currentUser} from '../main'
 import TextMessageComposer from '../components/text_messages/TextMessageComposer'
+import TextMessageViewer from '../components/text_messages/TextMessageViewer'
 
 export default {
   name: 'TextMessages',
-  components: {TextMessageComposer},
+  components: {TextMessageViewer, TextMessageComposer},
   created () {
     this.$watch('messages', this.scrollToBottom)
   },
   data () {
     return {
-      loading: true
+      loading: true,
+      composerIsSticky: true
     }
   },
   firebase () {
     return {
       messages: {
         source: textMessages,
-        readyCallback: () => { this.loading = false }
+        readyCallback: () => {
+          this.loading = false
+        }
       }
     }
   },
@@ -85,32 +84,11 @@ export default {
     margin-bottom: 1rem;
   }
 
-  .message {
+  .message-viewer {
     margin-bottom: 1rem;
   }
 
-  .display-name {
-    font-weight: bold;
-  }
-
-  .message-time {
-    margin-left: 1rem;
-    opacity: 0.5;
-  }
-
-  .message-header {
-    padding-bottom: 0;
-  }
-
-  .message-text {
-    padding-top: 0;
-  }
-
-  .message-text-content {
-    white-space: pre;
-  }
-
-  .message-composer {
+  .sticky-composer {
     position: sticky;
     bottom: 1rem;
   }
