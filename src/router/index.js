@@ -5,6 +5,7 @@ import TextMessages from '../pages/TextMessages'
 import Signup from '../pages/Signup'
 import Login from '../pages/Login'
 import UserInfo from '../pages/UserInfo'
+import FirebaseExamples from '../pages/FirebaseExamples'
 import firebase from 'firebase'
 
 Vue.use(Router)
@@ -39,6 +40,12 @@ let router = new Router({
       path: '/textMessages',
       name: 'TextMessages',
       component: TextMessages,
+      meta: {requiresAuth: true}
+    },
+    {
+      path: '/firebase',
+      name: 'Firebase',
+      component: FirebaseExamples,
       meta: {requiresAuth: true}
     }
   ]

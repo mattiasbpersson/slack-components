@@ -42,7 +42,7 @@
 <script>
 import {firebaseApp} from '../firebase'
 import {eventBus} from '../main'
-import {minLength, nonempty, isEmail, isValid} from '../inputValidation'
+import {nonempty, isEmail, isValid, inRange, maxLength} from '../inputValidation'
 
 export default {
   name: 'Signup',
@@ -50,15 +50,15 @@ export default {
     return {
       displayName: {
         value: '',
-        rules: [nonempty, minLength(3)]
+        rules: [nonempty, inRange(3, 50)]
       },
       email: {
         value: '',
-        rules: [nonempty, isEmail]
+        rules: [nonempty, isEmail, maxLength(100)]
       },
       password: {
         value: '',
-        rules: [nonempty, minLength(8)]
+        rules: [nonempty, inRange(8, 100)]
       },
       confirmPassword: {
         value: '',
