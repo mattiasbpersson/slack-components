@@ -14,9 +14,11 @@ Vue.use(Vuetify)
 Vue.use(VueFire)
 
 let appStarted = false
+export let currentUser
 
 /* Wait for initial firebase authentication (token validation) before creating Vue application */
-firebaseApp.auth().onAuthStateChanged(() => {
+firebaseApp.auth().onAuthStateChanged((user) => {
+  currentUser = user
   if (!appStarted) {
     /* eslint-disable no-new */
     new Vue({

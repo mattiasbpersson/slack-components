@@ -1,11 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import VueExamples from '../pages/VueExamples'
+import TextMessages from '../pages/TextMessages'
 import Signup from '../pages/Signup'
 import Login from '../pages/Login'
 import UserInfo from '../pages/UserInfo'
 import FirebaseExamples from '../pages/FirebaseExamples'
-import firebase from 'firebase'
+import {firebaseApp} from '../firebase'
+import {currentUser} from '../main'
 
 Vue.use(Router)
 
@@ -36,6 +38,12 @@ let router = new Router({
       meta: {requiresAuth: true}
     },
     {
+      path: '/textMessages',
+      name: 'TextMessages',
+      component: TextMessages,
+      meta: {requiresAuth: true}
+    },
+    {
       path: '/firebase',
       name: 'Firebase',
       component: FirebaseExamples,
@@ -45,14 +53,19 @@ let router = new Router({
 })
 
 router.beforeEach((to, from, next) => {
-  let currentUser = firebase.auth().currentUser
-
   let requiresAuth = to.matched.some(routeRecord => routeRecord.meta.requiresAuth)
 
   if (requiresAuth && !currentUser) {
     next('login')
   } else {
     next()
+  }
+})
+
+firebaseApp.auth().onAuthStateChanged((user) => {
+  let requiresAuth = router.currentRoute.matched.some(routeRecord => routeRecord.meta.requiresAuth)
+  if (!user && requiresAuth) {
+    router.push('/')
   }
 })
 

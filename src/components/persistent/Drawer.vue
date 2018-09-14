@@ -37,9 +37,8 @@ export default {
 
   methods: {
     createTextMessage () {
-      // TODO navigate to text message creator
-      console.log('Create text message')
       this.isOpen = false
+      this.$router.push({name: 'TextMessages'})
     },
     showFireBaseExamples () {
       console.log('Show firebase examples')
