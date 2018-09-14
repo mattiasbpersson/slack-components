@@ -2,6 +2,14 @@
 
 > Remake basic slack components
 
+* Samling, genomgång av dagen, kontroll om vilka som behöver gå när. 13-13:30
+* Genomgång av Vue.js enligt våra exempel 13:30 - 14:00
+* Genomgång av Firebase enligt våra exempel 14:00 -> 14:30
+* Genomgång av mob-programmering 14:30 - 15:00
+* Text-messaging komponenten och målen för mobben (vad vi ska skriva) 15:00 - 15:15
+* Mopprogrammering 15:15 -> 16:45
+* Avslutning - retro - vad har vi lärt oss vad ska vi göra bättre? (16:45-17:00) 
+
 ## Build Setup
 
 ``` bash
