@@ -6,12 +6,20 @@
           <v-list-tile-title>Firebase examples</v-list-tile-title>
         </v-list-tile-content>
       </v-list-tile>
-      <v-list-tile @click="createTextMessage()">
+      <v-list-tile @click="showTextMessageFeed()">
         <v-list-tile-action>
-          <v-icon>'create'</v-icon>
+          <v-icon>create</v-icon>
         </v-list-tile-action>
         <v-list-tile-content>
           <v-list-tile-title>text message</v-list-tile-title>
+        </v-list-tile-content>
+      </v-list-tile>
+      <v-list-tile @click="showPollFeed()">
+        <v-list-tile-action>
+          <v-icon>poll</v-icon>
+        </v-list-tile-action>
+        <v-list-tile-content>
+          <v-list-tile-title>poll</v-list-tile-title>
         </v-list-tile-content>
       </v-list-tile>
     </v-list>
@@ -36,13 +44,18 @@ export default {
   },
 
   methods: {
-    createTextMessage () {
-      this.isOpen = false
-      this.$router.push({name: 'TextMessages'})
+    showTextMessageFeed () {
+      this.navigateToRoute('TextMessages')
     },
     showFireBaseExamples () {
-      console.log('Show firebase examples')
-      this.$router.push('firebase')
+      this.navigateToRoute('Firebase')
+    },
+    showPollFeed () {
+      this.navigateToRoute('Polls')
+    },
+    navigateToRoute (name) {
+      this.isOpen = false
+      this.$router.push({name})
     }
   }
 }

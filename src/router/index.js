@@ -6,6 +6,7 @@ import Signup from '../pages/Signup'
 import Login from '../pages/Login'
 import UserInfo from '../pages/UserInfo'
 import FirebaseExamples from '../pages/FirebaseExamples'
+import Polls from '../pages/Polls'
 import {firebaseApp} from '../firebase'
 import {currentUser} from '../main'
 
@@ -47,6 +48,12 @@ let router = new Router({
       path: '/firebase',
       name: 'Firebase',
       component: FirebaseExamples,
+      meta: {requiresAuth: true}
+    },
+    {
+      path: '/polls',
+      name: 'Polls',
+      component: Polls,
       meta: {requiresAuth: true}
     }
   ]

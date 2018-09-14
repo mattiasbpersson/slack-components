@@ -14,3 +14,4 @@ export const firebaseApp = Firebase.initializeApp({
 export const db = firebaseApp.database()
 
 export const textMessages = db.ref('textMessages')
+export const polls = db.ref('polls')
