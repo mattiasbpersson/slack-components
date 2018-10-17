@@ -3,13 +3,13 @@
 
     <v-card-title>
       <span class="headline">
-        <code>bindAsArray</code><br>
+        <code>db.ref</code><br>
       </span>
     </v-card-title>
     <v-card-text>
       <template v-for="fruit in fruits">
         <p v-bind:key="fruit['.key']">
-          {{fruit['.value']}}
+          {{fruit.name}}
           <v-btn icon class="mx-0" @click="deleteFruit(fruit)">
             <v-icon color="pink">delete</v-icon>
           </v-btn>
@@ -19,7 +19,7 @@
             <v-container grid-list-md>
               <v-layout wrap>
                 <v-flex xs12 sm6 md4>
-                  <v-text-field label="Fruit" v-model="fruit"></v-text-field>
+                  <v-text-field label="Fruit" v-model="fruit.name"></v-text-field>
                 </v-flex>
               </v-layout>
             </v-container>
@@ -38,7 +38,7 @@ export default {
   name: 'FruitsOnFire',
   data () {
     return {
-      fruit: ''
+      fruit: {name: ''}
     }
   },
   firebase: {
