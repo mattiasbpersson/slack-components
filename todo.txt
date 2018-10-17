@@ -1,7 +1,5 @@
-* Vuefire - knyta en lista med object till lista på firebase
 * Vue-fire component som bara är ren text
 * Dokument - som bas-exempel på vad vi ska göra sen. Så de har nåt att titta på.
-* Firebase login
 
 * Respektive grupp:
 ** Todolist

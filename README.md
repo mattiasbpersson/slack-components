@@ -28,3 +28,17 @@ npm test
 ```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+## Fire base
+``` bash
+# login to firebase
+firebase login
+
+# initialize firebase configuration
+firebase init
+
+# build the project
+npm run build
+
+# deploy to firebase
+firebase deploy
