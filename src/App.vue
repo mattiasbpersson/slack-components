@@ -7,18 +7,16 @@
         <router-view></router-view>
       </v-container>
     </v-content>
-    <v-footer app>
-      <v-snackbar
-        v-model="snackbarOpen"
-        :bottom="true">
-        {{message}}
-        <v-btn
-          flat
-          @click="snackbar = false">
-          Close
-        </v-btn>
-      </v-snackbar>
-    </v-footer>
+    <v-snackbar
+      v-model="snackbarOpen"
+      :bottom="true">
+      {{message}}
+      <v-btn
+        flat
+        @click="snackbar = false">
+        Close
+      </v-btn>
+    </v-snackbar>
   </v-app>
 </template>
 
