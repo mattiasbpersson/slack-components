@@ -33,7 +33,7 @@
 
 <script>
 import { db } from '@/firebase'
-
+var fruityRef = db.ref('fruity_datas')
 export default {
   name: 'FruitsOnFire',
   data () {
@@ -41,22 +41,21 @@ export default {
       fruit: ''
     }
   },
-  firebase () {
-    // Bind fruits array to fruit_datas attribute in firebase
-    this.$bindAsArray('fruits', db.ref('fruity_datas'))
+  firebase: {
+    fruits: fruityRef
   },
   methods: {
     save (event) {
       console.log(this.fruit)
       // Store fruit object in firebase
       if (this.fruit) {
-        this.$firebaseRefs.fruits.push(this.fruit)
+        fruityRef.push(this.fruit)
       }
     },
     deleteFruit (fruit) {
       console.log(fruit)
       // Delete fruit object in firebase
-      this.$firebaseRefs.fruits.child(fruit['.key']).remove()
+      fruityRef.child(fruit['.key']).remove()
     }
   }
 }
